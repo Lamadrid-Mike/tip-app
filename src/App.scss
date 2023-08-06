@@ -1,0 +1,90 @@
+$main-color: rgb(11, 85, 85);
+$selected-color: rgb(68, 143, 143);
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.App {
+  margin-top: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+@mixin inputs-style {
+  max-width: 15rem;
+  height: 2.3rem;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  border-style: none;
+  background-color: rgba(227, 227, 227, 0.646);
+}
+
+.bill-input__user-data {
+  @include inputs-style;
+}
+
+.number-of-people__input {
+  @include inputs-style;
+  margin-bottom: 1.5rem;
+}
+
+.select-tip {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgb(109, 109, 109);
+}
+
+.select-tip__input {
+  color: whitesmoke;
+  width: 8.5rem;
+  height: 2.5rem;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  background-color: $main-color;
+  border-style: none;
+  color: white;
+  &:active {
+    background-color: $selected-color;
+  }
+}
+
+.tip-result {
+  width: 15rem;
+  height: 13rem;
+  background-color: $main-color;
+  border-radius: 5px;
+
+  .tip-result__total {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+}
+
+.tip-result__btn {
+  width: 10rem;
+  height: 2.5rem;
+  background-color: $selected-color;
+  border-style: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: whitesmoke;
+}
+
+.total-amount {
+  color: $selected-color;
+  font-size: 2rem;
+  font-weight: 700;
+}
