@@ -7,8 +7,6 @@ function App() {
   const [tip, setTip] = useState(0);
   const [numberPeople, setNumberPeople] = useState(0);
 
-  console.log(tip);
-
   return (
     <div className="App">
       <div className="bill-input">
@@ -32,7 +30,7 @@ function App() {
           Number of people
           <br />
           <input
-            placeholder="people"
+            placeholder="#"
             className="number-of-people__input"
             name="people-input"
             onChange={(e) => setNumberPeople(e.target.value)}
@@ -43,12 +41,12 @@ function App() {
             <p className="tip_result__per-person">
               Tip Amount
               <br />
-              /person
+              <span>/person</span>
             </p>
             <p className="tip_result__amount-per-person total-amount">$4.27</p>
             <p className="tip_result__total">
               Total <br />
-              /person
+              <span>/person</span>
             </p>
             <p className="tip_result__amount-total total-amount">$32.79</p>
           </div>
