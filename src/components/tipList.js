@@ -1,5 +1,4 @@
-const tips = [5, 10, 15, 20];
-
+const tips = [10, 15, 20, 25];
 const ListOfTips = (props) => {
   return tips.map((el, i) => {
     return (

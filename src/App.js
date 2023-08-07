@@ -1,29 +1,29 @@
 import "./App.scss";
 import { useState } from "react";
 import ListOfTips from "./components/tipList";
+import BillInput from "./components/billInput";
+
+const extractNumber = (number) => {
+  let pattern = /(\d+)/;
+  let result = number.match(pattern);
+  return result[0];
+};
+
+const insertDecimal = (number) => {
+  return (number / 100).toFixed(2);
+};
 
 function App() {
-  const [billData, setBillData] = useState(0);
-  const [tip, setTip] = useState(0);
-  const [numberPeople, setNumberPeople] = useState(0);
+  const [billData, setBillData] = useState("");
+  const [tip, setTip] = useState("");
+  const [numberPeople, setNumberPeople] = useState("");
 
   return (
     <div className="App">
-      <div className="bill-input">
-        <label>
-          Bill
-          <br />
-          <input
-            placeholder="$"
-            className="bill-input__user-data"
-            name="bill-input"
-            onChange={(e) => setBillData(e.target.value)}
-          ></input>
-        </label>
-      </div>
+      <BillInput setBill={(e) => setBillData(e.target.value)} />
       <label>Select tip %</label>
       <div className="select-tip">
-        <ListOfTips setTip={(e) => setTip(e.target.value)} />
+        <ListOfTips setTip={(e) => setTip(extractNumber(e.target.value))} />
       </div>
       <div className="number-of-people">
         <label>
