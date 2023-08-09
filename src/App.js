@@ -27,6 +27,8 @@ function App() {
   const resetBtn = (e) => {
     e.preventDefault();
     setBillData("");
+    setTip("");
+    setNumberPeople("");
   };
 
   let displayTip = tipResult(insertDecimal(tip), billData).toFixed(2);
