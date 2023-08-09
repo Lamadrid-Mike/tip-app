@@ -2,6 +2,7 @@ import "./App.scss";
 import { useState } from "react";
 import ListOfTips from "./components/tipList";
 import BillInput from "./components/billInput";
+import NumberOfPeople from "./components/numberOfPeople";
 
 const extractNumber = (number) => {
   let pattern = /(\d+)/;
@@ -13,10 +14,23 @@ const insertDecimal = (number) => {
   return (number / 100).toFixed(2);
 };
 
+let tipResult = (a, b) => {
+  let result = a * b;
+  return result;
+};
+
 function App() {
   const [billData, setBillData] = useState("");
   const [tip, setTip] = useState("");
   const [numberPeople, setNumberPeople] = useState("");
+
+  const resetBtn = (e) => {
+    e.preventDefault();
+    setBillData("");
+  };
+
+  let displayTip = tipResult(insertDecimal(tip), billData).toFixed(2);
+  let tipPerPerson = Math.round(displayTip / numberPeople).toFixed(2);
 
   return (
     <div className="App">
@@ -25,34 +39,13 @@ function App() {
       <div className="select-tip">
         <ListOfTips setTip={(e) => setTip(extractNumber(e.target.value))} />
       </div>
-      <div className="number-of-people">
-        <label>
-          Number of people
-          <br />
-          <input
-            placeholder="#"
-            className="number-of-people__input"
-            name="people-input"
-            onChange={(e) => setNumberPeople(e.target.value)}
-          ></input>
-        </label>
-        <div className="tip-result">
-          <div className="tip-result__total">
-            <p className="tip_result__per-person">
-              Tip Amount
-              <br />
-              <span>/person</span>
-            </p>
-            <p className="tip_result__amount-per-person total-amount">$4.27</p>
-            <p className="tip_result__total">
-              Total <br />
-              <span>/person</span>
-            </p>
-            <p className="tip_result__amount-total total-amount">$32.79</p>
-          </div>
-          <button className="tip-result__btn">Reset</button>
-        </div>
-      </div>
+      <NumberOfPeople
+        setPeople={(e) => setNumberPeople(e.target.value)}
+        nPeople={numberPeople}
+        tipPerson={tipPerPerson}
+        displayTip={displayTip}
+        resetBtn={resetBtn}
+      />
     </div>
   );
 }
