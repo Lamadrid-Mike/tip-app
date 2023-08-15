@@ -47,7 +47,6 @@ label {
 }
 
 .select-tip__input {
-  color: whitesmoke;
   width: 8.5rem;
   height: 2.5rem;
   font-size: 1.5rem;
@@ -55,8 +54,10 @@ label {
   background-color: $main-color;
   border-style: none;
   color: white;
+  transition: all 0.1s;
   &:active {
     background-color: $selected-color;
+    transform: translateY(2px);
   }
 }
 

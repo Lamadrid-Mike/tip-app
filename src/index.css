@@ -3,6 +3,7 @@ body {
   font-family: "Chakra Petch", sans-serif;
   animation-name: opacity;
   animation-duration: 1s;
+  background-color: rgba(215, 215, 215, 0.249);
 }
 
 @keyframes opacity {
