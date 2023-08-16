@@ -23,6 +23,7 @@ const NumberOfPeople = (props) => {
           </p>
           <p className="tip_result__total">
             Total <br />
+            <span>/person</span>
           </p>
           <p className="tip_result__amount-total total-amount">
             ${props.displayTip}

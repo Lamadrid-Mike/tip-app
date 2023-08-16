@@ -33,6 +33,7 @@ function App() {
 
   let displayTip = tipResult(insertDecimal(tip), billData).toFixed(2);
   let tipPerPerson = Math.round(displayTip / numberPeople).toFixed(2);
+  let totalPerPerson = Math.floor(billData / numberPeople);
 
   return (
     <div className="App">
@@ -45,7 +46,7 @@ function App() {
         setPeople={(e) => setNumberPeople(e.target.value)}
         nPeople={numberPeople}
         tipPerson={tipPerPerson}
-        displayTip={displayTip}
+        displayTip={totalPerPerson ? totalPerPerson : "0.00"}
         resetBtn={resetBtn}
       />
     </div>
