@@ -24,16 +24,9 @@ function App() {
   const [tip, setTip] = useState("");
   const [numberPeople, setNumberPeople] = useState("");
 
-  const resetBtn = (e) => {
-    e.preventDefault();
-    setBillData("");
-    setTip("");
-    setNumberPeople("");
-  };
-
   let displayTip = tipResult(insertDecimal(tip), billData).toFixed(2);
-  let tipPerPerson = Math.round(displayTip / numberPeople).toFixed(2);
-  let totalPerPerson = Math.floor(billData / numberPeople);
+  let tipAmount = Math.round(displayTip / numberPeople).toFixed(2);
+  let totalPerson = billData / numberPeople;
 
   return (
     <div className="App">
@@ -45,9 +38,8 @@ function App() {
       <NumberOfPeople
         setPeople={(e) => setNumberPeople(e.target.value)}
         nPeople={numberPeople}
-        tipPerson={tipPerPerson}
-        displayTip={totalPerPerson ? totalPerPerson : "0.00"}
-        resetBtn={resetBtn}
+        tipPerson={tipAmount}
+        displayTip={isFinite(totalPerson) ? totalPerson.toFixed(2) : "0.00"}
       />
     </div>
   );
