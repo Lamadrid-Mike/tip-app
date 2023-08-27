@@ -5,6 +5,7 @@ const BillInput = (props) => {
         Bill
         <br />
         <input
+          ref={props.ref}
           placeholder="$"
           className="bill-input__user-data"
           name="bill-input"
